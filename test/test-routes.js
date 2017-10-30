@@ -162,6 +162,18 @@ describe('Routes', function() {
       expect(spy.called).to.be(true);
     });
 
+    it('should be return true if matching route (with query params)', function() {
+      var method = {
+        callback: function(req, res, next) {}
+      },
+          spy = sinon.spy(method, 'callback');
+
+      route.append('/', spy);
+      route.route({}, {}, '/?test=true');
+
+      expect(spy.called).to.be(true);
+    });
+
     it('should be return true if matching route (has placeholder)', function() {
       var method = {
         callback: function(req, res, next) {
@@ -261,6 +273,17 @@ describe('Routes', function() {
       ).to.eql({
         directory: 'script',
         script: 'index.js'
+      });
+    })
+
+    it('should be return query params if present', function() {
+      expect(
+          route.getParamKeys_({
+            path: '/test'
+          }, '/test', 'alpha=1&beta=2')
+      ).to.eql({
+        alpha: 1,
+        beta: 2
       });
     });
 
