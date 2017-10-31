@@ -118,19 +118,19 @@ describe('Routes', function() {
         {
           path: /^\/([^\/]+)\/([^\/]+)$/,
           callback: route1,
-          paramKeys: ['/:key1', '/:param1'],
+          paramKeys: [':key1', ':param1'],
           isRegExp: true
         },
         {
           path: /^\/([^\/]+)\/([^\/]+)$/,
           callback: route2,
-          paramKeys: ['/:key2', '/:param2'],
+          paramKeys: [':key2', ':param2'],
           isRegExp: true
         },
         {
           path: /^\/([^\/]+)\/([^\/]+)$/,
           callback: route3,
-          paramKeys: ['/:key3', '/:param3'],
+          paramKeys: [':key3', ':param3'],
           isRegExp: true
         }
       ]);
